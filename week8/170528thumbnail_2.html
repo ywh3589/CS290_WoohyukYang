@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSSample</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+</head>
+
+
+<script type="text/javascript">
+    $(function() {
+        $(form).submit(function(event){
+         var myKey = "eea1044d6a7247fb923ce294fa63d105";
+        var urlinput = $('#url').val();
+        var winput = $('#width').val();
+        var height = $('#height').val();
+        //console.log(input);
+        var myBody = {url:urlinput};
+
+        var params = {
+            // Request parameters
+             "width": winput,
+            "height": height,
+            "smartCropping": "true",
+        };
+
+        $.ajax({
+            url: "https://southeastasia.api.cognitive.microsoft.com/vision/v1.0/generateThumbnail?" + $.param(params),
+            beforeSend: function(xhrObj){
+                // Request headers
+                xhrObj.setRequestHeader("Content-Type","application/json");
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", myKey);
+                xhrObj.responseType = 'blob';
+            },
+            type: "POST",
+            // Request body
+            data: JSON.stringify(myBody),
+        })
+        .done(function(data) {
+            alert("success");
+            console.log(data);
+		    var b = JSON.stringify(data);
+function b64(s) {
+  var key = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+
+  var i = 0, len = s.length,
+      c1, c2, c3,
+      e1, e2, e3, e4,
+      result = [];
+ 
+  while (i < len) {
+    c1 = s.charCodeAt(i++);
+    c2 = s.charCodeAt(i++);
+    c3 = s.charCodeAt(i++);
+   
+    e1 = c1 >> 2;
+    e2 = ((c1 & 3) << 4) | (c2 >> 4);
+    e3 = ((c2 & 15) << 2) | (c3 >> 6);
+    e4 = c3 & 63;
+   
+    if (isNaN(c2)) {
+      e3 = e4 = 64;
+    } else if (isNaN(c3)) {
+      e4 = 64;
+    }
+   
+    result.push(e1, e2, e3, e4);
+  }
+ 
+  return result.map(function (e) { return key.charAt(e); }).join('');
+}
+
+var bd = b64(b); // "4pyTIMOgIGxhIG1vZGU="
+console.log(bd);
+//bd += b64EncodeUnicode('\n'); // "Cg=="
+
+        //var bd = btoa(unescape(encodeURIComponent(b)))
+//appending a new thumbnail
+$('#response').html('<img src="data:image/jpg;base64,' + bd + '" />');
+
+//appending an old image
+
+         var img = new Image();
+           var div_2 = document.getElementById('original_img');
+
+           img.onload = function(){
+            div_2.appendChild(img)
+           };
+
+           img.src = urlinput;
+         
+
+
+
+         })
+        .fail(function() {
+            alert("error");
+            
+        });
+        //img.remove();
+
+        event.preventDefault();
+
+
+    });
+
+
+});
+        
+</script>
+<body>
+<form name = 'form'>
+    <fieldset>
+        <legend><h2>Who is this</h2></legend>
+         <p>
+        <label>url here:
+            <input type="text" name="Name_input" id = "url" size="30" maxlength="100000000000">
+        </label>
+        </p>
+         <p>
+        <label>width here:
+            <input type="text" name="width_input" id = "width" size="30" maxlength="100000000000">
+        </label>
+        </p>
+         <p>
+        <label>height here:
+            <input type="text" name="height_input" id = "height" size="30" maxlength="100000000000">
+        </label>
+        </p>
+        
+        </label>
+         <input type="Submit" value="Submit" id = "Submit" />
+        </fieldset>
+
+      
+    
+</form>
+
+<div>
+      <legend><h2>Old image</h2></legend>
+    
+        <div id="original_img"></div>
+        <legend><h2>new Thumbnail</h2></legend>
+        <div id="response"></div>
+
+    </div>
+</body>
+</html>

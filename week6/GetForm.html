@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      var apiKey = 'c11c1df05623e9dc55e293b58c881b63';
+
+      document.addEventListener('DOMContentLoaded', bindButtons);
+
+      function bindButtons(){
+        document.getElementById('citySubmit').addEventListener('click', function(event){
+          var req = new XMLHttpRequest();
+          console.log(document.getElementById('cityInput.value'));
+          req.open('GET', 'http://api.openweathermap.org/data/2.5/forecast?q=' + document.getElementById('cityInput').value + ',or&appid='+ apiKey, false);
+          req.setRequestHeader('Content-Type', 'application/json');
+          req.send(null);
+          var response = JSON.parse(req.responseText);
+          console.log(response);
+
+          /*
+          document.getElementById('cityName').textContent = response.city;
+          document.getElementById('weather').textContent = response.weather;
+          */
+          event.preventDefault();
+        })
+      }
+    </script>
+  </head>
+  <body>
+    <form>
+      <fieldset>
+        <legend>Weather</legend>
+        input city name or zipcode
+        city name or zipcode : <label for="cityWeather"></label>
+       <input type="text" name="city" id="cityInput"><br>
+       <input type="submit" id="citySubmit">
+      </fieldset>
+    </form>
+    <div>
+      <h2>Result</h2>
+      <ul>
+        <li><span>City's name:</span><span id="cityName"></span></li>
+        <li><span>Weather:</span><span id="weather"></span></li>
+      </ul>
+    </div>
+  </body>
+</html>

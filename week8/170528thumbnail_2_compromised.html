@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSSample</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+</head>
+
+
+<script type="text/javascript">
+    $(function() {
+        $(form).submit(function(event){
+         var myKey = "eea1044d6a7247fb923ce294fa63d105";
+        var urlinput = $('#url').val();
+        var winput = $('#width').val();
+        var height = $('#height').val();
+        //console.log(input);
+        var myBody = {url:urlinput};
+
+        var params = {
+            // Request parameters
+             "width": winput,
+            "height": height,
+            "smartCropping": "true",
+        };
+
+        $.ajax({
+            url: "https://southeastasia.api.cognitive.microsoft.com/vision/v1.0/generateThumbnail?" + $.param(params),
+            beforeSend: function(xhrObj){
+                // Request headers
+                xhrObj.setRequestHeader("Content-Type","application/json");
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", myKey);
+                xhrObj.responseType = 'blob';
+            },
+            type: "POST",
+            // Request body
+            data: JSON.stringify(myBody),
+        })
+        .done(function(data) {
+            alert("success");
+            $('#response').append(data);
+
+         })
+        .fail(function() {
+            alert("error");
+            
+        });
+       
+        event.preventDefault();
+
+
+    });
+
+
+});
+        
+</script>
+<body>
+<form name = 'form'>
+    <fieldset>
+        <legend><h2>Who is this</h2></legend>
+         <p>
+        <label>url here:
+            <input type="text" name="Name_input" id = "url" size="30" maxlength="100000000000">
+        </label>
+        </p>
+         <p>
+        <label>width here:
+            <input type="text" name="width_input" id = "width" size="30" maxlength="100000000000">
+        </label>
+        </p>
+         <p>
+        <label>height here:
+            <input type="text" name="height_input" id = "height" size="30" maxlength="100000000000">
+        </label>
+        </p>
+        
+        </label>
+         <input type="Submit" value="Submit" id = "Submit" />
+        </fieldset>
+
+      
+    
+</form>
+
+ <legend><h2>new Thumbnail binary image data</h2></legend>
+        <div id="response"></div>
+
+
+</body>
+</html>

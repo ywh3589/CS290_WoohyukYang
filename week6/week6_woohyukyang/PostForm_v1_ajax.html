@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+     
+      document.addEventListener('DOMContentLoaded', bindButtons);
+
+      function bindButtons(){
+        document.getElementById('Submit').addEventListener('click', function(event){
+          var req = new XMLHttpRequest();
+          var payload = {name:null, id:null, password:null};
+          payload.name = document.getElementById('name').value;
+          payload.id = document.getElementById('inputID').value;
+          payload.password = document.getElementById('password').value;
+          req.open('POST', 'http://httpbin.org/post', true);
+          req.setRequestHeader('Content-Type', 'application/json');
+          req.addEventListener('load',function(){
+          if(req.status >= 200 && req.status < 400){
+            var response = JSON.parse(req.responseText);
+            document.getElementById('response').textContent = response.data;
+           
+          } else {
+            console.log("Error in network request: " + req.statusText);
+          }});
+
+          req.send(JSON.stringify(payload));
+         
+          event.preventDefault();
+        })
+      }
+    </script>
+  </head>
+  <body>
+   <form>
+    <fieldset>
+        <legend><h2>Request</h2></legend>
+         <p>
+        <label>Name here:
+            <input type="text" name="Name_input" id = "name" size="30" maxlength="100">
+        </label>
+        </p>
+        <p> 
+        <label>ID here:
+            <input type="text" name="ID_input" id = "inputID" size="30" maxlength="100">
+        </label>
+        </p>
+        <p>
+         <label>Password here:
+            <input type="Password" name="Password_input" id = "password" size="30" maxlength="100">
+        </label>
+         <input type="Submit" value="Submit" id = "Submit" />
+        </fieldset>
+
+      <div>
+      <legend><h2>Workout list</h2></legend>
+      <ul>
+        <li><span>response : </span><span id="response"></span></li>
+      </ul>
+
+    </div>
+    
+</form>
+  </body>
+</html>

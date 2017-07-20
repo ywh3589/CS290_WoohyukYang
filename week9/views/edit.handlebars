@@ -1,0 +1,19 @@
+<h3>Edit entry {{editData.id}}</h3>
+  <form method="post" action="/" id="editForm">
+    <label for="postName">Name</label>
+    <input type="text" name="name" value="{{editData.name}}" id="editName"/><br>
+    <label for="postReps">Reps</label>
+    <input type="number" name="reps" value="{{editData.reps}}" id="editReps"/><br>
+    <label for="postWeight">Weight</label>
+    <input type="text" name="weight" value="{{editData.weight}}" id="editWeight"/><br>
+    <label for="postDate">Date</label>
+    <input type="date" name="date" value="{{editData.date}}" id="editDate"/><br>
+    <label for="PostLbs">lbs?</label>
+    <select name="lbs" id="editLbs"/>
+      <option value=0 {{#if editData.lbs}}selected="selected"{{/if}}>lbs</option>
+      <option value=1 {{#unless editData.lbs}}selected="selected"{{/unless}}>kg</option>
+    </select><br>
+    <input type="hidden" name="id" value="{{editData.id}}" id="editId"/><br>
+    <input type="button" value="Edit Row" id="editRow" />
+    <input type="button" value="Cancel" id="cancelEdit" />
+  </form>

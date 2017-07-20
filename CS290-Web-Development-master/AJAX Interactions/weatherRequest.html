@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Report</title>
+</head>
+<body>
+    <form>                                                                                          <!Form for users to enter info>
+        <fieldset>
+            <label>Enter the city and or zip code of where you want to see the weather info!</label>
+            <fieldset>
+                <p>
+                    <label>Zip Code:<input type="text" name="zipCode" id="zip" size="9"</label>
+                </p>
+                <p>
+                    <label>City:<input type="text" name="city" id="city" size="30"<label>
+                </p>
+               
+                <p>
+                    <input type="submit" name="submit" id="getWeather">
+                </p>
+            </fieldset>
+        </fieldset>
+    </form>
+    
+     
+    <table>                                                             <!A table to display all the weather information>
+        <caption>Weather Results</caption>
+        <tr>
+            <th>Description</th>
+            <th>Result</th>
+        </tr>
+        <tr>
+            <td>Temperature:</td>
+            <td id="mainTemp">Console</td>
+        </tr>
+
+        <tr>
+            <td>Humidity:</td>
+            <td id="weatherHumidity">Console</td>
+        </tr>
+        <tr>
+            <td>Wind Speed:</td>
+            <td id="weatherSpeed">Console</td>
+        </tr>
+        <tr>
+            <td>Sunrise:</td>
+            <td id="sunriseStart">Console</td>
+        </tr>
+
+    </table>
+
+    <script src="weatherReport.js"></script>
+</body>
+</html>

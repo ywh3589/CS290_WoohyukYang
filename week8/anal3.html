@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSSample</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+</head>
+
+
+<script type="text/javascript">
+    var myKey = "eea1044d6a7247fb923ce294fa63d105";
+    var inputURL = document.getElementById('url').value;
+    //var inputURL = "https://pbs.twimg.com/profile_images/558109954561679360/j1f9DiJi_400x400.jpeg"
+    var myBody = {url:inputURL}
+    $(function() {
+        var params = {
+            // Request parameters
+            "visualFeatures": "Categories",
+            "details":"Celebrities",
+            "language": "en",
+        };
+
+        $.ajax({
+            url: "https://southeastasia.api.cognitive.microsoft.com/vision/v1.0/analyze?" + $.param(params),
+            beforeSend: function(xhrObj){
+                // Request headers
+                xhrObj.setRequestHeader("Content-Type","application/json");
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", myKey);
+            },
+            type: "POST",
+            // Request body
+            data: JSON.stringify(myBody),
+        })
+        .done(function(data) {
+            alert("success");
+            console.log(JSON.stringify(data));
+           // console.log(data.categories[0].detail.celebrities[0].confidence);
+           // document.getElementById('response').textContent = JSON.stringify(data);
+           // document.getElementById('response').textContent = data.categories[0].detail;
+            document.getElementById('response').textContent = data.categories[0].detail.celebrities[0].name;
+
+        })
+        .fail(function() {
+            alert("error");
+        });
+    });
+</script>
+<body>
+<form>
+   
+      <div>
+      <legend><h2>Response</h2></legend>
+      <ul>
+        <li><span>response : </span><span id="response"></span></li>
+      </ul>
+
+    </div>
+    
+</form>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<h1>POST Request Received</h1>
+
+<h2>You sent the following parameter names and values in the URL query string in a POST request:</h2>
+
+<ul>
+  {{#each paramList}}
+    <li> parameter name = {{this.name}}, value = {{this.value}}
+  {{/each}}
+</ul>
+
+<h2>You sent the following data in a POST request:</h2>
+<ul>
+  {{#each dataList}}
+    <li> property name = {{this.key}}, value = {{this.value}}
+  {{/each}}
+</ul>

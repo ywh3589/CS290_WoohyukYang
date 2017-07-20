@@ -1,0 +1,55 @@
+<h1>Hello {{ name }} Here is your To Do List!</h1>
+<h2>You have {{ toDoCount }} items on your to do list.</h2>
+<form class="form-horizontal" method="post">
+  <div class="form-group">
+    <label for="name" class="col-sm-2 control-label">Name:</label>
+    <div class="col-sm-10">
+      <input type="text" name="name" id="toDoName" />
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="zip" class="col-sm-2 control-label">Zip Code:</label>
+    <div class="col-sm-10">
+      <input type="number" name="zip" id="location" />
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="minTemp" class="col-sm-2 control-label">Min Temp (&#8457;):</label>
+    <div class="col-sm-10">
+      <input type="number" name="minTemp" id="toDo-minTemp" />
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="maxTemp" class="col-sm-2 control-label">Max Temp (&#8457;):</label>
+    <div class="col-sm-10">
+      <input type="number" name="maxTemp" id="toDo-maxTemp" />
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <input type="submit" name="Add Item" value="Add Item" />
+    </div>
+  </div>
+</form>
+{{#if toDo}}
+<ul>
+  {{#each toDo}}
+    <li id="{{ this.id }}">
+      <h3>{{ this.name }}</h3>
+      <ul>
+        <li>Zipcode: {{ this.zip }}</li>
+        <li>Min Temp: {{ this.minTemp }}</li>
+        <li>Max Temp: {{ this.maxTemp }}</li>
+      </ul>
+      <form class="form-horizontal" method="post">
+        <input type="hidden" name="id" value="{{ this.id }}" />
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <input type="submit" name="Done" value="Mark as Done" />
+          </div>
+        </div>
+      </form>
+    </li>
+  {{/each}}
+</ul>
+{{/if}}

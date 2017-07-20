@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Aysnchronous POST Request</title>
+</head>
+
+<body>
+    <form>                                                                                          <!Form for users to enter info->
+        <fieldset>
+            <label>Enter your favorite sport and team!</label>
+            <fieldset>
+                <p>
+                    <label>Favorite Sport:<input type="text" name="sportName" id="sport" size="40"</label>
+                </p>
+                <p>
+                    <label>Favorite Team:<input type="text" name="teamName" id="team" size="40"<label>
+                </p>
+               
+                <p>
+                    <input type="submit" name="submit" id="submitInfo">
+                </p>
+            </fieldset>
+        </fieldset>
+    </form>
+
+    
+    <table>                                                             <!A table to display all the returned data>
+        <caption>Response</caption>
+        <tr>
+            <th>Description</th>
+            <th>Result</th>
+        </tr>
+        <tr>
+            <td>Favorite Sport:</td>
+            <td id="sportReturn">Console</td>
+        </tr>
+                <tr>
+            <td>Favorite Team:</td>
+            <td id="teamReturn">Console</td>
+        </tr>
+    </table>
+
+    <script src="postScript.js"></script>
+</body>
+</html>

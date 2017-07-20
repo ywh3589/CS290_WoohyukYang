@@ -1,0 +1,9 @@
+<h1> GET Request Received</h1>
+
+
+<h2>You sent the following parameter names and values in the URL query string in a GET request:</h2>
+<ul>
+  {{#each dataList}}
+    <li>parameter name = {{this.name}}, value = {{this.value}}
+  {{/each}}
+</ul>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      var apiKey = 'c11c1df05623e9dc55e293b58c881b63';
+
+      document.addEventListener('DOMContentLoaded', bindButtons);
+
+      function bindButtons(){
+        document.getElementById('citySubmit').addEventListener('click', function(event){
+          var req = new XMLHttpRequest();
+          //var payload = {longUrl:null};
+          //payload.longUrl = document.getElementById('longUrl').value;
+          var city =  document.getElementById('cityInput').value;
+          req.open('GET', 'http://api.openweathermap.org/data/2.5/weather?q=' + city + ',or&appid=' +apiKey, false);
+          //req.setRequestHeader('Content-Type', 'application/json');
+          //req.send(JSON.stringify(payload));
+          req.send(null);
+          var response = JSON.parse(req.responseText);
+          console.log(response);
+          document.getElementById('cityName').textContent = response.name;
+          document.getElementById('regionID').textContent = response.id;
+          event.preventDefault();
+        })
+      }
+    </script>
+  </head>
+  <body>
+    <form>
+      <fieldset>
+        <legend>Weather Info</legend>
+        <label for="longUrl">Input city name or zipcode : </label>
+        <input type="text" name="cityInput" id="cityInput">
+        <input type="submit" id="citySubmit">
+      </fieldset>
+    </form>
+    <div>
+      <h2>Result</h2>
+      <ul>
+        <li><span>Name of the city:</span><span id="cityName"></span></li>
+        <li><span>ID of the region:</span><span id="regionID"></span></li>
+      </ul>
+    </div>
+  </body>
+</html>

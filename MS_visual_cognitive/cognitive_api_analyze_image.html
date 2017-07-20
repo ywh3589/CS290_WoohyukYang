@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSSample</title>
+  
+</head>
+<script>
+
+    document.addEventListener('DOMContentLoaded', bindButtons);
+
+      function bindButtons(){
+        document.getElementById('Submit').addEventListener('click', function(event){
+          var req = new XMLHttpRequest();
+         var payload = {url:null}
+          var inputUrl = document.getElementById('url').value;
+          payload.url = inputUrl;
+          
+          //var city =  document.getElementById('cityInput').value;
+          req.open('POST', 'https://southeastasia.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Categories&details=Celebrities&language=en', false);
+
+          req.setRequestHeader("Content-Type", "application/json");
+          req.setRequestHeader("Ocp-Apim-Subscription-Key","eea1044d6a7247fb923ce294fa63d105");
+            
+       
+
+
+          var data = JSON.stringify(payload);
+          req.send(data);
+           var response = JSON.parse(data);
+          event.preventDefault();
+
+          });
+  
+          
+        }
+
+        
+    
+
+
+</script>
+
+
+<body>
+
+ <form>
+    <fieldset>
+        <legend><h2>Request</h2></legend>
+         <p>
+        <label>url here:
+            <input type="text" name="Name_input" id = "url" size="30" maxlength="100">
+        </label>
+        </p>
+        
+        </label>
+         <input type="Submit" value="Submit" id = "Submit" />
+        </fieldset>
+
+      <div>
+      <legend><h2>Response</h2></legend>
+      <ul>
+        <li><span>respose : </span><span id="response"></span></li>
+      </ul>
+
+    </div>
+    
+</form>
+</body>
+</html>

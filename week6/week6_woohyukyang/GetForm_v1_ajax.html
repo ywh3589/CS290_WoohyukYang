@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      var apiKey = 'c11c1df05623e9dc55e293b58c881b63';
+
+      document.addEventListener('DOMContentLoaded', bindButtons);
+
+      function bindButtons(){
+        document.getElementById('citySubmit').addEventListener('click', function(event){
+          var req = new XMLHttpRequest();
+          var city =  document.getElementById('cityInput').value;
+          req.open('GET', 'http://api.openweathermap.org/data/2.5/weather?q=' + city + ',or&appid=' +apiKey, true);
+          req.addEventListener('load',function(){
+          if(req.status >= 200 && req.status < 400){
+            var response = JSON.parse(req.responseText);
+            document.getElementById('cityName').textContent = response.name;
+            document.getElementById('regionID').textContent = response.id;
+            document.getElementById('temp').textContent = response.main.temp;
+         
+            document.getElementById('pressure').textContent = response.main.pressure;
+            document.getElementById('humidity').textContent = response.main.humidity;
+            document.getElementById('temp_min').textContent = response.main.temp_min;
+            document.getElementById('temp_max').textContent = response.main.temp_max;
+            document.getElementById('wind_speed').textContent = response.wind.speed;
+           
+            document.getElementById('cloudiness').textContent = response.clouds.all;
+          
+          } else {
+            console.log("Error in network request: " + req.statusText);
+          }});
+
+          req.send(null);
+         
+          event.preventDefault();
+        })
+      }
+    </script>
+  </head>
+  <body>
+    <form>
+      <fieldset>
+        <legend>Weather Info</legend>
+        <label for="longUrl">Input city name or zipcode : </label>
+        <input type="text" name="cityInput" id="cityInput">
+        <input type="submit" id="citySubmit">
+      </fieldset>
+    </form>
+    <div>
+      <h2>Results(displaying only few selected items)</h2>
+      <ul>
+        <li><span>City ID :</span><span id="cityName"></span></li>
+        <li><span>City name :</span><span id="regionID"></span></li>
+        <li><span>Temperature :</span><span id="temp"></span></li>
+        
+        <li><span>Atmospheric pressure :</span><span id="pressure"></span></li>
+        <li><span>humidity :</span><span id="humidity"></span></li>
+        <li><span>Temperature_min :</span><span id="temp_min"></span></li>
+        <li><span>Temperature_max :</span><span id="temp_max"></span></li>
+       
+       <li><span>Wind speed :</span><span id="wind_speed"></span></li>
+       <li><span>Cloudiness :</span><span id="cloudiness"></span></li>
+       
+      </ul>
+    </div>
+  </body>
+</html>

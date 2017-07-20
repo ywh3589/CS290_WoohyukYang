@@ -1,0 +1,16 @@
+<h2>Update Workout list</h2>
+
+<form action="/update">
+    Name:
+    <input type="text" name="name" id="name" value="{{results.name}}"><br>
+    Reps:
+    <input type="number" name="reps" id="reps value="{{results.reps}}"><br>
+    Weight:
+    <input type="number" name="weight" id="weight value="{{results.weight}}"><br>
+    Date:
+    <input type="date" name="date" id="date" value="{{results.date}}"><br>
+    LBS:
+    <input type="number" name="lbs" id="lbs" value="{{results.lbs}}"><br>
+    <input type="hidden" name="id" value={{results.id}}>
+    <input type="submit" name="Save" value="Save" id="Save">
+</form>

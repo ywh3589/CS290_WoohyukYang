@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<link rel="stylesheet" href="D:\Essential\schooling\cs_290\style.css" type="text/css">
+        <meta charset="utf-8">
+       
+    </head>
+    <body>
+
+<!--Creating a 6X6 table with footer row -->
+        <table>
+         <caption>Who wins? Cell content indicates the status of the row entry.</caption>
+            <tr class = "header">
+                <th></th>
+                <th>Godzila</th>
+                <th>Batman</th>
+                 <th>Shq</th>
+                <th>Aron Carter</th>
+                <th>Abe Lincoln</th>
+            </tr>
+            <tr class = "first-row">
+            	<td><em>Godzila</em></td>
+                <td>N/A</td>
+                <td>Minor Loss</td>
+                <td>Loss</td>
+                <td>Unknown</td>
+                <td>Unknown</td>
+            </tr>
+            <tr class = "second-row">
+                <td><em>Batman</em></td>
+                <td>Minor Win</td>
+                <td>N/A</td>
+                <td>Total Victory</td>
+                <td>Total Victory</td>
+                <td>Total Loss</td>
+
+            </tr>
+            <tr class = "third-row">
+                <td><em>Shaq</em></td>
+                <td>Minor Win</td>
+                <td>N/A</td>
+                <td>Total Victory</td>
+                <td>Minor Loss</td>
+                <td>Unknown</td>
+            </tr>
+            <tr class = "fourth-row">
+                <td><em>Aron Carter</em></td>
+                <td>Unknown</td>
+                <td>Total Loss</td>
+                <td>Minor Win</td>
+                <td>N/A</td>
+                <td>Unknown</td>
+            </tr>
+            <tr class = "fifth-row">
+                <td><em>Abe Lincoln</em></td>
+                <td>Unknown</td>
+                <td>Total Victory</td>
+                <td>Unknown</td>
+                <td>Unknown</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td colspan="2">Footer1</td>
+                <td colspan="4">Footer2</td>              
+            </tr>
+
+
+        </table>
+
+
+
+<!--Creating a list(ul) with at least 3 entries -->
+
+        <ul>
+  		<li>Best Language</li>
+  		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Python
+  		<li>Wakyist Language</li>
+  		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Haskell
+  		<li>SEGFAULTiest Language</li>
+  		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C
+		</ul>
+
+<!--Creating a BOX  -->
+<div class= "outer-content">
+<div class = "inner-content">
+	Here is some content.
+</div>
+</div>
+
+
+<!--Creating two forms. One with post, one with get -->
+<form action="http://classes.engr.oregonstate.edu/eecs/winter2015/cs290-400/tools/class-content/form_tests/check_request.php" method="get">
+    <fieldset>
+        <legend>Some GET Data</legend>
+        <p>
+        <label>Text here:
+            <input type="text" name="text_input" size="30" maxlength="100">
+        </label>
+        </p>
+        <p>
+        <label>Number here:
+            <input type="Number" name="numerical_input" size="30" maxlength="100">
+        </label>
+        </p>
+        <p>
+         <label>Password here:
+            <input type="Password" name="password_input" size="30" maxlength="100">
+        </label>
+        </p>
+       <p id = "select">Select between:
+           </br>
+           </br>
+            <label>
+                <input type="radio" name="candy" value="Snickers" />Snickers</label>
+            </br>
+            </br>
+            <label>
+                <input type="radio" name="candy" value="Skittles" />Skittles</label>
+            </br>
+            </br>
+            <label>
+                <input type="radio" name="candy" value="Mentos" />Mentos</label>
+            </br>
+            </br>
+        <input type="Submit" value="Submit" />
+        </p>
+    </fieldset>
+    
+</form>
+
+
+
+<form action="http://classes.engr.oregonstate.edu/eecs/winter2015/cs290-400/tools/class-content/form_tests/check_request.php"  method="post">
+    <fieldset>
+        <legend>Some POST Data</legend>
+         <p>
+        <label>Text here:
+            <input type="text" name="text_input" size="30" maxlength="100">
+        </label>
+        </p>
+        <p>
+        <label>Number here:
+            <input type="Number" name="numerical_input" size="30" maxlength="100">
+        </label>
+        </p>
+        <p>
+         <label>Password here:
+            <input type="Password" name="password_input" size="30" maxlength="100">
+        </label>
+        </p>
+       <p id="select">select between:
+            </br>
+            </br>
+            <label>
+                <input type="radio" name="candy" value="Snickers" />Snickers</label>
+            </br>
+            </br>
+            <label>
+                <input type="radio" name="candy" value="Skittles" />Skittles</label>
+            </br>
+            </br>
+            <label>
+                <input type="radio" name="candy" value="Mentos" />Mentos</label>
+            </br>
+            </br>
+        <input type="Submit" value="Submit" />
+    </fieldset>
+    
+</form>
+
+
+    </body>
+</html>

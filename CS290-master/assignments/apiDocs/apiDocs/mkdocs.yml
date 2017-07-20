@@ -1,0 +1,6 @@
+site_name: Jquery AJAX
+pages:
+- Home: index.md
+- About: about.md
+theme: readthedocs
+extra_javascript: [script.js]

@@ -1,0 +1,74 @@
+  <form>
+    <fieldset>
+        <legend><h2>Make a new entry</h2></legend>
+         <p>
+        <label>Name here:
+            <input type="text" name="Name_input" id = "name" size="30" maxlength="100">
+        </label>
+        </p>
+        <p> 
+        <label>Reps here:
+            <input type="number" name="Reps_input" id = "reps" size="30" maxlength="100">
+        </label>
+        </p>
+        <p>
+         <label>Weight here:
+            <input type="text" name="Weight_input" id = "weight" size="30" maxlength="100">
+        </label>
+         <p>
+         <label>Date here:
+            <input type="date" name="Date_input" id = "date" size="30" maxlength="100">
+        </label>
+         <p>
+          <label>choose lbs or kg
+        <select name="lbs" id="postLbs"/>
+        <option value=0>lbs</option>
+        <option value=1>kg</option>
+        </label>
+
+        <p>
+         <input type="Submit" value="Submit" id = "Submit"/>
+        </fieldset>
+
+      <div>
+      <legend><h2>Completed Workout</h2></legend>
+      <ul>
+        <li><span>response : </span><span id="response"></span></li>
+      </ul>
+
+    </div>
+    
+</form>
+
+
+<table>
+  <tr>
+    <th id="table_name" colspan="6">Workout Tracker</th>
+  </tr>
+  <tr>
+    <th>Name</th>
+    <th>Reps</th>
+    <th>Weight</th>
+    <th>Date</th>
+    <th>LBS/KG</th>
+    <th>Edit</th>
+  </tr>
+    {{#each rows}}
+      <tr id="row{{id}}">
+        <form>
+          <td>{{name}}</td>
+          <td>{{reps}}</td>
+          <td>{{weight}}</td>
+          <td>{{date}}</td>
+          <td>{{lbs}}</td>
+          <td>
+          <input type="button" value="edit" onclick="injectEditForm({{id}})">
+        </form>
+        <form>
+          <input type="button" value="delete" onclick="deleteRow({{id}}, loadHandlebars)">
+        </form>
+        </td>
+      </tr>
+  {{/each}}
+</table>
+

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   <meta charset="UTF-8">
+   <title>title</title>
+    <script src="./public/javascript/client.js"> </script>
+    <style>
+table, td {
+    border: 1px solid black;
+}
+</style>
+  </head>
+  <body>
+   <form>
+    <fieldset>
+        <legend><h2>Make a new entry</h2></legend>
+         <p>
+        <label>Name here:
+            <input type="text" name="Name_input" id = "name" size="30" maxlength="100">
+        </label>
+        </p>
+        <p> 
+        <label>Reps here:
+            <input type="text" name="Reps_input" id = "reps" size="30" maxlength="100">
+        </label>
+        </p>
+        <p>
+         <label>Weight here:
+            <input type="text" name="Weight_input" id = "weight" size="30" maxlength="100">
+        </label>
+         <p>
+         <label>Date here:
+            <input type="date" name="Date_input" id = "date" size="30" maxlength="100">
+        </label>
+         <p>
+         <label>lbs here(1 indicates labs, 0 indicate kgs):
+            <input type="text" name="Lbs_input" id = "lbs" size="1" maxlength="1">
+        </label>
+        <p>
+         <input type="Submit" value="Submit" id = "Submit"/>
+        </fieldset>
+
+      <div>
+      <legend><h2>Workout track</h2></legend>
+      <ul>
+        <li><span>response : </span><span id="response"></span></li>
+      </ul>
+
+    </div>
+    
+</form>
+
+
+
+  </body>
+</html>
